@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System.Text;
+﻿
 using ByteBankIO;
 
 partial class Program
@@ -17,10 +16,9 @@ partial class Program
                 var linha  = leitor.ReadLine();
                 var contaCorrente = ConverterStringParaContaCorrente(linha);
 
-                var msg = $"Conta número {contaCorrente.Numero}, ag {contaCorrente.Agencia}, Saldo {contaCorrente.Saldo}";
+                var msg = $"{contaCorrente.Titular.Nome} : Conta número {contaCorrente.Numero}, ag {contaCorrente.Agencia}, Saldo {contaCorrente.Saldo}";
 
                 Console.WriteLine(msg);
-
             }
         }
         Console.ReadLine();
@@ -30,7 +28,7 @@ partial class Program
     static ContaCorrente ConverterStringParaContaCorrente(string linha)
     {
         // 375 4644 2483.13 Jonatan
-        var campos = linha.Split(' ');
+        var campos = linha.Split(',');
 
         var agencia = campos[0];
         var numero = campos[1];
